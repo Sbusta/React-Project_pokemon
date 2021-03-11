@@ -1,5 +1,5 @@
 import './App.css';
-import navbar from './components/navbar'
+import Navbar from './components/navbar'
 import pkList from './components/list_pokemon'
 import pkDetails from './components/pk_details'
 import { Provider } from 'react-redux'
@@ -17,9 +17,9 @@ function App() {
 
         <Route path='/pokemons' exact>
         
-          <PokeList/>
-          <PokeDetails/>
-          <PokeCompare/>
+          <pkList/>
+          <pkDetails/>
+          <pkCompare/>
         </Route>
       
       </Provider>
