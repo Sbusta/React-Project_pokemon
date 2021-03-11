@@ -1,7 +1,7 @@
 import './App.css';
 import Navbar from './components/navbar'
-import pkList from './components/list_pokemon'
-import pkDetails from './components/pk_details'
+import PkList from './components/list_pokemon'
+import PkDetails from './components/pk_details'
 import { Provider } from 'react-redux'
 import {BrowserRouter, Route} from 'react-router-dom'
 import store from './store'
@@ -17,9 +17,9 @@ function App() {
 
         <Route path='/pokemons' exact>
         
-          <pkList/>
-          <pkDetails/>
-          <pkCompare/>
+          <PkList/>
+          <PkDetails/>
+          <PkCompare/>
         </Route>
       
       </Provider>
