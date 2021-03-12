@@ -1,60 +1,41 @@
 import React, { useState, useEffect, useRef} from 'react';
 import {connect} from 'react-redux'
 import styles from './list.module.css';
-import pokeball from './running-Jolteon.gif';
-import {updatePokemon} from '../../actions/selectActions';
+import loadingGif from './running-Jolteon.gif';
+import {fetchPokemon} from '../../actions/selectActions';
 import {updateSecond} from '../../actions/compareActions';
 
 const Pokemon = (props) =>{
-    const [pokemon, setPokemon] = useState({});
-    const [isLoaded, setIsLoaded] = useState(false);
-    
-    useEffect(()=>{
-        async function fetchData(){
-            setIsLoaded(false);
-            await fetch(props.pokeUrl)
-            .then(res => res.json())
-            .then(pokemon => setPokemon({pokemon}));
-            setIsLoaded(true);
-        }
-        fetchData();
-    }, []);
+    const [loading, setLoading] = useState(true);
+  const imgUrl = IMAGE_URL + props.number + '.png';
+  const dispatch = useDispatch();
 
-    const handleClick = () =>{
-        if(Object.keys(props.compare.first).length === 0){
-            props.updatePokemon(pokemon);
-        }else{
-            props.updateSecond(pokemon.pokemon);
-        }
-    }
-    return(
-        <span>
-            { isLoaded ?
-            <span className={props.display ? styles.pokemonCard: styles.hidden} onClick={handleClick}>  
-                <img className={styles.pokemonImg} alt={pokemon.pokemon.name} src={pokemon.pokemon.sprites['front_default']}></img>
-                <span className={styles.pokemonName}>{pokemon.pokemon.name.toUpperCase()}</span>
-            </span>
-            :
-            <span className={styles.pokemonCard}>  
-                <img className={styles.pokemonImg} src={pokeball} alt='Loading...'></img>
-                <span className={styles.pokemonName}>Loading...</span>
-            </span>
-            }
-        </span>
-    )
+  const selectPokemon = () =>{
+    dispatch(fetchPokemon(props.pokeUrl));
+  };
+  
+  return(
+    <span>
+      <span className={props.display ? styles.pokemonCard: styles.hidden} onClick={selectPokemon}>
+        <img className={styles.pokemonImg} alt={props.name} src={loading ? loadingGif : imgUrl} onLoad={()=>setLoading(false)}></img>
+        <span className={styles.pokemonName}>{props.name.toUpperCase()}</span>
+      </span>
+    </span>
+  );
 }
+
 const mapStateToProps = (state) => {
-    return {
-        search: state,
-        compare: state.compare
-    }
-}
+  return {
+    search: state,
+    compare: state.compare
+  }
+};
 const mapDispatchToProps = (dispatch) => {
-    return{
-        updatePokemon: (pokemon) => dispatch(updatePokemon(pokemon)),
-        updateSecond: (pokemon) => dispatch(updateSecond(pokemon))
-    }
-}
+  return{
+    updateSecond: (pokemon) => dispatch(updateSecond(pokemon))
+  }
+};
+
 export default connect(mapStateToProps,
-                       mapDispatchToProps)
-                       (Pokemon);
+             mapDispatchToProps)
+             (Pokemon);

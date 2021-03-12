@@ -1,26 +1,34 @@
-import {UPDATE_POKEMON, CLEAR_POKEMON} from '../actions/selectActions'
+import {fetchPokemon, closePokemon} from '../actions/selectActions';
+import {createReducer} from '@reduxjs/toolkit';
 
 const initialState = {
-    pokemon: {
+  pokemon: {
 
-    }
-}
+  },
+  description:{
 
-function selectReducer (state = initialState, action){
-    switch (action.type) {
-        case UPDATE_POKEMON:
-            return {
-                pokemon: action.payload
-            }
+  }
+};
 
-        case CLEAR_POKEMON:
-            return{
-                initialState
-            }
+const selectReducer = createReducer(initialState, (builder)=>{
+  builder
+    .addCase(fetchPokemon.fulfilled, (state,action) =>{
+      return state = {
+        pokemon: action.payload[0],
+        description: action.payload[1]
+      }
+    })
+    .addCase(closePokemon, (state,action) =>{
+      return state = {
+        pokemon:{
+          
+        },
+        description:{
 
-        default:
-            return state
-    }
-}
+        }
+      }
+    });
+
+});
 
 export default selectReducer;
