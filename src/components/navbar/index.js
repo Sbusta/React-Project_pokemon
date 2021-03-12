@@ -1,37 +1,44 @@
 import styles from './navegationbar.module.css';
+import {connect, useDispatch} from 'react-redux';
 import {updateSearch} from '../../actions/searchActions';
-import {connect} from 'react-redux'
+import { Link } from 'react-router-dom';
+import {filter} from '../../actions/pokemonActions'
+const Navbar = (props) =>{
+  const dispatch = useDispatch();
+
+  const filterUpdate = (event) => {
+    props.updateSearch(event.target.value.toLowerCase());
+    dispatch(filter(event.target.value.toLowerCase()))
+  }
+
+  return(
+  <nav className={styles.navBar}>
+    <span>
+      <Link to='/' className={styles.title}>PokéApp</Link>
+    </span>
+    <span className={styles.navContainer}>
+      <Link to='pokemons' className={styles.navLink}>Pokemon</Link>
+      <Link to='items' className={styles.navLink}>Items</Link>
+    </span>
+    <span>
+      <input type='text' placeholder='Search' className={styles.navSearch} onChange={filterUpdate}></input>
+    </span>
+  </nav>);
+};
 
 const mapStateToProps = (state) => {
-    return {
-        search: state.search
-    };
-}
-const mapDispatchToProps = (dispatch) => {
-    return{
-        updateSearch: (search) => dispatch(updateSearch(search))
-    };
-}
+  return {
+    search: state.search
+  };
+};
 
-const Navbar = (props) =>{
-    const handlerChange = (e) => {
-        props.updateSearch(e.target.value);
-    }
-    return(
-    <nav className={styles.navBar}>
-        <span>
-            <a href='/' className={styles.title}>ThePokéApp</a>
-        </span>
-        <span className={styles.navContainer}>
-            <a href='pokemons' className={styles.navLink}>Pokemons</a>
-        </span>
-        <span>
-            <input type='text' placeholder='Search' className={styles.navSearch} onChange={handlerChange}></input>
-        </span>
-    </nav>);
-    
-}
+const mapDispatchToProps = (dispatch) => {
+  return{
+    updateSearch: (search) => dispatch(updateSearch(search))
+  };
+};
+
 
 export default connect(mapStateToProps,
-                       mapDispatchToProps)
-                       (Navbar);
+             mapDispatchToProps)
+             (Navbar);
