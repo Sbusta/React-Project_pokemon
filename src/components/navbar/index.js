@@ -18,7 +18,7 @@ const Navbar = (props) =>{
     </span>
     <span className={styles.navContainer}>
       <Link to='pokemons' className={styles.navLink}>Pokemon</Link>
-      <Link to='items' className={styles.navLink}>Items</Link>
+      <Link to='items' className={styles.navLink}>Items</Link>11
     </span>
     <span>
       <input type='text' placeholder='Search' className={styles.navSearch} onChange={filterUpdate}></input>

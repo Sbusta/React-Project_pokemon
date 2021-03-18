@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef } from 'react';
 
 const useElementOnScreen = (options) => {
     const containerRef = useRef(null);
@@ -11,10 +11,14 @@ const useElementOnScreen = (options) => {
 
     useEffect(() => {
         const observer = new IntersectionObserver(callbackFunction, options);
-        if (containerRef.current) observer.observe(containerRef.current);
+        if (containerRef.current){ 
+            observer.observe(containerRef.current);
+        }
 
         return () => {
-            if(containerRef.current) observer.unobserve(containerRef.current);
+            if(containerRef.current){ 
+                observer.unobserve(containerRef.current);
+            }
         }
     }, [containerRef, options]);
 

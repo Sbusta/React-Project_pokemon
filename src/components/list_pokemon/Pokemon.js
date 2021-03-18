@@ -6,7 +6,7 @@ import {fetchPokemon} from '../../actions/selectActions';
 import {updateSecond} from '../../actions/compareActions';
 
 const Pokemon = (props) =>{
-    const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
   const imgUrl = IMAGE_URL + props.number + '.png';
   const dispatch = useDispatch();
 
