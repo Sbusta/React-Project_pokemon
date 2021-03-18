@@ -16,8 +16,7 @@
     font-size: 1.75rem;
 }
 .navContainer{
-    display: flex;
-    justify-content: left;
+    justify-content: flex-start left;
     width: 75%;
     font-weight: 500;
     padding-left: 1%;
