@@ -1,0 +1,9 @@
+.welcomeContainer{
+  text-align: center;
+}
+@media (max-width: 500px){
+  .loadGif{
+    width: 360px;
+    height: 270px;
+  }
+}

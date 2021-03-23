@@ -1,24 +1,29 @@
-import logo from './logo.svg';
 import './App.css';
+import Navbar from './components/navbar'
+import PkList from './components/list_pokemon'
+import PkDetails from './components/pk_details'
+import PkCompare from './components/pk_compare'
+import Home from './components/home';
+import { Provider } from 'react-redux'
+import {BrowserRouter, Route} from 'react-router-dom'
+import store from './store'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Provider store={store} >
+        <Navbar/>
+        <Route path='/' exact>
+            <Home></Home>
+        </Route>
+        <Route path='/pokemons' exact>
+          <PkList/>
+          <PkDetails/>
+          <PkCompare/>
+        </Route>
+      
+      </Provider>
+    </BrowserRouter>
   );
 }
 

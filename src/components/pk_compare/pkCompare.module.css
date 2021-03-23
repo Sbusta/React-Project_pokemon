@@ -1,0 +1,83 @@
+
+.compareBackground{
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--details-bg-);
+  position: fixed;
+  display: flex;
+  top: 0;
+  left: 0;
+  align-items: center;
+  justify-content: center;
+}
+.compareWindow{
+  width: 50%;
+  height: 80%;
+  background-color: var(--white);
+}
+.compareHeader{
+  background-color: var(--nav-color);
+  padding: 3%;
+  font-weight: 700;
+  font-size: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+}
+.closeButton{
+  border-style: none;
+  background-color: Transparent;
+}
+.compareContainer{
+  height: 90%;
+  display: grid;
+  grid-template-rows: 30% 30% 40%;
+
+}
+.imageContainer{
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  grid-auto-flow: column;
+  border-bottom: 3px solid var(--gray);
+}
+.pokemonImg{
+  width: auto;
+  height: 100%;
+  align-self: center;
+}
+.charContainer{
+  display: grid;
+  grid-template-columns: 30% 30% 30%;
+  text-align: center;
+  justify-content: center;
+  border-bottom: 3px solid var(--gray);
+}
+.charTitle{
+  font-weight: 700;
+}
+.closeButton{
+  border-style: none;
+  background-color: Transparent;
+  font-size: 1.2rem;
+  font-weight: 500;
+  padding: 1%;
+}
+@media (max-width: 770px){
+  .compareWindow{
+    width: 80%;
+    height: 80%;
+    background-color: var(--white);
+  }
+}
+@media (max-width: 500px){
+  .compareWindow{
+    width: 90%;
+    height: 80%;
+    background-color: var(--white);
+  }
+  .pokemonImg{
+    width: 10rem;
+    height: 10rem;
+    align-self: center;
+  }
+}
