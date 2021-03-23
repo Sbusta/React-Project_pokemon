@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef} from 'react';
-import {connect} from 'react-redux'
+import {connect, useDispatch} from 'react-redux'
 import styles from './list.module.css';
 import loadingGif from './running-Jolteon.gif';
 import {fetchPokemon} from '../../actions/selectActions';

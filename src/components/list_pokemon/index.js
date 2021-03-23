@@ -1,10 +1,11 @@
 
 import React, { useState, useEffect, useRef} from 'react';
-import {connect} from 'react-redux'
+import {connect, useDispatch} from 'react-redux'
 import styles from './list.module.css';
 import useElementOnScreen from './useElementOnScreen';
 import pokerun from './running-Jolteon.gif';
 import Pokemon from './Pokemon';
+import {fetchPokemons} from '../../actions/pokemonActions';
 
 const PokeList = (props) => {
   const pokemons = props.pokemons.filteredPokemons;
