@@ -10,7 +10,7 @@ import {
   } from 'recharts';
 import {clearPokemons} from '../../actions/compareActions';
 
-const PokeCompare = (props) => {
+const pkCompare = (props) => {
   const first = props.compare.first;
   const second = props.compare.second;
 
@@ -173,4 +173,4 @@ const mapDispatchToProps = (dispatch) => {
 
 export default connect(mapStateToProps,
              mapDispatchToProps)
-             (PokeCompare);
+             (pkCompare);

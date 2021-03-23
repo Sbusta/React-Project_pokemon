@@ -8,7 +8,6 @@ import {IMAGE_URL} from '../../utils'
 
 const Pokemon = (props) =>{
   const [loading, setLoading] = useState(true);
-  //const imgUrl = '${IMAGE_URL} ${props.number}.png';
   const imgUrl = IMAGE_URL + props.number + '.png';
   const dispatch = useDispatch();
 
@@ -37,7 +36,6 @@ const mapDispatchToProps = (dispatch) => {
     updateSecond: (pokemon) => dispatch(updateSecond(pokemon))
   }
 };
-
 export default connect(mapStateToProps,
              mapDispatchToProps)
              (Pokemon);
