@@ -16,9 +16,7 @@ function App() {
         <Route path='/' exact>
             <Home></Home>
         </Route>
-
         <Route path='/pokemons' exact>
-        
           <PkList/>
           <PkDetails/>
           <PkCompare/>

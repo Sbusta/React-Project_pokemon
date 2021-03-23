@@ -1,13 +1,15 @@
 import React, { useState, useEffect, useRef} from 'react';
 import {connect, useDispatch} from 'react-redux'
 import styles from './list.module.css';
-import loadingGif from './running-Jolteon.gif';
+import loadingGif from './pikachu_run.gif';
 import {fetchPokemon} from '../../actions/selectActions';
 import {updateSecond} from '../../actions/compareActions';
+import {IMAGE_URL} from '../../utils'
 
 const Pokemon = (props) =>{
   const [loading, setLoading] = useState(true);
-  const imgUrl = '${IMAGE_URL} ${props.number}.png';
+  //const imgUrl = '${IMAGE_URL} ${props.number}.png';
+  const imgUrl = IMAGE_URL + props.number + '.png';
   const dispatch = useDispatch();
 
   const selectPokemon = () =>{
